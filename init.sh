@@ -22,8 +22,8 @@ if [ -d ".git" ]; then
     git submodule update --init --recursive
     git clean -fd
     git reset --hard
-    exit 0
     printf "${GREEN}Repository updated successfully!${NC}\n"
+    exit 0
 else
     printf "${YELLOW}Repository not found, proceeding with installation...${NC}\n"
 fi
