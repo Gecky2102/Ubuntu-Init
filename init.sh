@@ -19,6 +19,10 @@ printf "${CYAN}╚════════════════════�
 if [ -d ".git" ]; then
     printf "${YELLOW}Updating repository...${NC}\n"
     git pull origin main
+    git submodule update --init --recursive
+    git clean -fd
+    git reset --hard
+    printf "${GREEN}Repository updated successfully!${NC}\n"
 else
     printf "${YELLOW}Repository not found, proceeding with installation...${NC}\n"
 fi
