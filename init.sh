@@ -26,9 +26,6 @@ if [ -d ".git" ]; then
     if [ $? -ne 0 ]; then
         printf "${RED}Error updating repository. Exiting...${NC}\n"
         exit 1
-    else
-        printf "${GREEN}Repository updated, restarting script...${NC}\n"
-        exec "$0" "$@"
     fi
 else
     printf "${YELLOW}Repository not found, proceeding with installation...${NC}\n"
