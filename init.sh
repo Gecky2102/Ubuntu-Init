@@ -23,7 +23,13 @@ if [ -d ".git" ]; then
     git clean -fd
     git reset --hard
     printf "${GREEN}Repository updated successfully!${NC}\n"
-    exit 0
+    if [ $? -ne 0 ]; then
+        printf "${RED}Error updating repository. Exiting...${NC}\n"
+        exit 1
+    else
+        printf "${GREEN}Repository updated, restarting script...${NC}\n"
+        exec "$0" "$@"
+    fi
 else
     printf "${YELLOW}Repository not found, proceeding with installation...${NC}\n"
 fi
