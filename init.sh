@@ -22,6 +22,7 @@ if [ -d ".git" ]; then
     git submodule update --init --recursive
     git clean -fd
     git reset --hard
+    exit 0
     printf "${GREEN}Repository updated successfully!${NC}\n"
 else
     printf "${YELLOW}Repository not found, proceeding with installation...${NC}\n"
@@ -76,3 +77,11 @@ ufw enable
 systemctl enable fail2ban
 systemctl start fail2ban
 
+cleanup() {
+    printf "${MAGENTA}Cleaning up temporary files...${NC}\n"
+    rm -rf /tmp/*
+}
+
+trap cleanup EXIT
+
+echo "Setup complete! 🎉"
