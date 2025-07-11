@@ -74,11 +74,6 @@ if systemctl list-unit-files | grep -q fail2ban.service; then
 else
     printf "${YELLOW}fail2ban service not found, skipping enable/start.${NC}\n"
 fi
-ufw allow 80/tcp
-ufw allow 443/tcp
-ufw enable
-systemctl enable fail2ban
-systemctl start fail2ban
 
 cleanup() {
     printf "${MAGENTA}Cleaning up temporary files...${NC}\n"
